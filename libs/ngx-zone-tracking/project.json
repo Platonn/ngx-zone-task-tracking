@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/ngx-zone-tracking"],
+      "outputs": [
+        "dist/libs/ngx-zone-tracking"
+      ],
       "options": {
         "project": "libs/ngx-zone-tracking/ng-package.json"
       },
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/ngx-zone-tracking"],
+      "outputs": [
+        "coverage/libs/ngx-zone-tracking"
+      ],
       "options": {
         "jestConfig": "libs/ngx-zone-tracking/jest.config.js",
         "passWithNoTests": true

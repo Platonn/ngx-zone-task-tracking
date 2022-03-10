@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ZoneTrackingModule.forRoot({ printWithDelay: 5 })],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), ZoneTrackingModule.forRoot({ printWithDelay: 5 })],
   providers: [],
   bootstrap: [AppComponent],
 })
