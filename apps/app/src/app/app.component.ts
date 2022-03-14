@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-zone-tracking-root',
+  selector: 'ngx-zone-task-tracking-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

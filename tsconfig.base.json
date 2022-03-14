@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ngx-zone-tracking": ["libs/ngx-zone-tracking/src/index.ts"]
+      "ngx-zone-task-tracking": ["libs/ngx-zone-task-tracking/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

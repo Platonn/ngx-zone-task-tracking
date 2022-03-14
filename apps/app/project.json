@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/app",
   "sourceRoot": "apps/app/src",
-  "prefix": "ngx-zone-tracking",
+  "prefix": "ngx-zone-task-tracking",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

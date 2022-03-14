@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "ngxZoneTracking",
+            "prefix": "ngxZoneTaskTracking",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ngx-zone-tracking",
+            "prefix": "ngx-zone-task-tracking",
             "style": "kebab-case"
           }
         ]

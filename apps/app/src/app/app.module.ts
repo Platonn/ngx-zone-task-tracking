@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ZoneTrackingModule } from 'ngx-zone-tracking';
+import { ZoneTaskTrackingModule } from 'ngx-zone-task-tracking';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    ZoneTrackingModule.printTasksWithDelay(2000),
+    ZoneTaskTrackingModule.printTasksWithDelay(2000),
   ],
   providers: [],
   bootstrap: [AppComponent],

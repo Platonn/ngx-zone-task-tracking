@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'ngx-zone-tracking',
+  displayName: 'ngx-zone-task-tracking',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/ngx-zone-tracking',
+  coverageDirectory: '../../coverage/libs/ngx-zone-task-tracking',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

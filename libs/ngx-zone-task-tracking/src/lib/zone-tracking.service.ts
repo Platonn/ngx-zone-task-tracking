@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import './fixed-zonejs-task-tracking';
-import { ZoneTrackingConfig } from './zone-tracking.config';
+import { ZoneTaskTrackingConfig } from './zone-tracking.config';
 
 export type ZoneTask = unknown;
 
@@ -23,10 +23,10 @@ export interface AllTasks {
 @Injectable({
   providedIn: 'root',
 })
-export class ZoneTrackingService {
+export class ZoneTaskTrackingService {
   constructor(
     protected readonly ngZone: NgZone,
-    protected readonly config: ZoneTrackingConfig
+    protected readonly config: ZoneTaskTrackingConfig
   ) {}
 
   // Access the NgZone's internals - TaskTrackingZone:

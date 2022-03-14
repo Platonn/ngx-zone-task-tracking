@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-describe('ZoneTrackingService', () => {
-  let service: NgxZoneTrackingServiceService;
+describe('ZoneTaskTrackingService', () => {
+  let service: NgxZoneTaskTrackingServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgxZoneTrackingServiceService);
+    service = TestBed.inject(NgxZoneTaskTrackingServiceService);
   });
 
   it('should be created', () => {

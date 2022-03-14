@@ -1,5 +1,5 @@
 {
-  "npmScope": "ngx-zone-tracking",
+  "npmScope": "ngx-zone-task-tracking",
   "affected": {
     "defaultBase": "main"
   },

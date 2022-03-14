@@ -3,6 +3,6 @@
   "projects": {
     "app": "apps/app",
     "app-e2e": "apps/app-e2e",
-    "ngx-zone-tracking": "libs/ngx-zone-tracking"
+    "ngx-zone-task-tracking": "libs/ngx-zone-task-tracking"
   }
 }
