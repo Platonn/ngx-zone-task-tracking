@@ -1,23 +1,25 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
-import 'zone.js/plugins/task-tracking';
 import { ZoneTrackingConfig } from './zone-tracking.config';
 import { ZoneTrackingService } from './zone-tracking.service';
 
 @NgModule({})
 export class ZoneTrackingModule {
-  static forRoot(
-    config: ZoneTrackingConfig
+  static printTasksWithDelay(
+    delay?: number
   ): ModuleWithProviders<ZoneTrackingModule> {
     return {
       ngModule: ZoneTrackingModule,
       providers: [
-        { provide: ZoneTrackingConfig, useValue: config },
+        {
+          provide: ZoneTrackingConfig,
+          useValue: { printTasksDelay: delay ?? 3000 },
+        },
         {
           provide: APP_INITIALIZER,
           multi: true,
           deps: [ZoneTrackingService],
           useFactory: (service: ZoneTrackingService) => () =>
-            service.printWithDelay(),
+            service.printTasksWithDelay(),
         },
       ],
     };

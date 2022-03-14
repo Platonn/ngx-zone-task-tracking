@@ -1,5 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
+import './fixed-zonejs-task-tracking';
 import { ZoneTrackingConfig } from './zone-tracking.config';
+
+export type ZoneTask = unknown;
 
 export enum TaskType {
   microTask = 'microTask',
@@ -8,15 +11,13 @@ export enum TaskType {
 }
 
 export interface Task {
-  type: TaskType;
-  name: string;
-  stacktrace: string;
+  stacktrace: Error;
+  _task: ZoneTask;
 }
 
 export interface AllTasks {
   microTasks: Task[];
   macroTasks: Task[];
-  eventTasks: Task[];
 }
 
 @Injectable({
@@ -32,24 +33,19 @@ export class ZoneTrackingService {
   protected readonly taskTrackingZone = (this.ngZone as any)._inner._parent
     ._properties.TaskTrackingZone;
 
-  printWithDelay() {
-    const waitSeconds = this.config.printWithDelay;
-    console.log(
-      `⏳ ... Wait ${waitSeconds} seconds to dump pending tasks ... ⏳`
-    );
+  printTasksWithDelay() {
+    const waitSeconds = this.config.printTasksDelay;
 
-    // Run the debugging `setTimeout` code outside of
-    // the Angular Zone, so it's not considered as
-    // yet another pending Zone Task:
+    console.log(`⏳ Wait ${waitSeconds}ms to dump pending tasks `);
     this.ngZone.runOutsideAngular(() => {
       setTimeout(() => {
         this.printTasks();
-      }, 1000 * waitSeconds);
+      }, waitSeconds);
     });
   }
 
   printTasks() {
-    console.log(`👀 Pending tasks in NgZone: 👀\n`, this.getTasks());
+    console.log(`👀 Pending tasks in NgZone:\n`, this.getTasks());
   }
 
   /**
@@ -57,24 +53,22 @@ export class ZoneTrackingService {
    */
   getTasks(): AllTasks {
     return {
-      microTasks: this.getTasksFor(TaskType.microTask),
       macroTasks: this.getTasksFor(TaskType.macroTask),
-      eventTasks: this.getTasksFor(TaskType.eventTask),
+      microTasks: this.getTasksFor(TaskType.microTask),
     };
   }
 
   getTasksFor(taskType: TaskType): Task[] {
     const tasks = this.taskTrackingZone.getTasksFor(taskType);
 
-    return tasks.map((task: any) => {
+    return tasks.map((task: ZoneTask) => {
       // `task.creationLocation` is an `Error` object containing the stacktrace
       // see source code https://github.com/angular/angular/blob/d1ea1f4c7f3358b730b0d94e65b00bc28cae279c/packages/zone.js/lib/zone-spec/task-tracking.ts#L40
-      const creationLocation: Error = task.creationLocation;
+      const creationLocation: Error = (task as any).creationLocation;
 
       return {
-        type: taskType,
-        name: creationLocation.message,
-        stacktrace: creationLocation.stack,
+        stacktrace: creationLocation,
+        _task: task,
       } as Task;
     });
   }
