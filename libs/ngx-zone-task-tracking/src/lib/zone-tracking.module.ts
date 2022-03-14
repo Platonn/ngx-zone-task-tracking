@@ -4,7 +4,7 @@ import { ZoneTaskTrackingService } from './zone-tracking.service';
 
 @NgModule({})
 export class ZoneTaskTrackingModule {
-  static printTasksWithDelay(
+  static printWithDelay(
     delay?: number
   ): ModuleWithProviders<ZoneTaskTrackingModule> {
     return {

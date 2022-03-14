@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    ZoneTaskTrackingModule.printTasksWithDelay(2000),
+    ZoneTaskTrackingModule.printWithDelay(2000),
   ],
   providers: [],
   bootstrap: [AppComponent],
